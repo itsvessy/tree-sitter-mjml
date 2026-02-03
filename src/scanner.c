@@ -136,7 +136,7 @@ static bool scan_cdata(TSLexer *lexer) {
     return false;
 }
 
-bool tree_sitter_xml_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
+bool tree_sitter_mjml_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
     Vector *tags = (Vector *)payload;
 
     if (in_error_recovery(valid_symbols)) {
@@ -187,14 +187,14 @@ bool tree_sitter_xml_external_scanner_scan(void *payload, TSLexer *lexer, const 
     return false;
 }
 
-void *tree_sitter_xml_external_scanner_create() {
+void *tree_sitter_mjml_external_scanner_create() {
     Vector *tags = (Vector *)ts_calloc(1, sizeof(Vector));
     if (tags == NULL) abort();
     array_init(tags);
     return tags;
 }
 
-void tree_sitter_xml_external_scanner_destroy(void *payload) {
+void tree_sitter_mjml_external_scanner_destroy(void *payload) {
     Vector *tags = (Vector *)payload;
     for (uint32_t i = 0; i < tags->size; ++i) {
         array_delete(array_get(tags, i));
@@ -203,7 +203,7 @@ void tree_sitter_xml_external_scanner_destroy(void *payload) {
     ts_free(tags);
 }
 
-unsigned tree_sitter_xml_external_scanner_serialize(void *payload, char *buffer) {
+unsigned tree_sitter_mjml_external_scanner_serialize(void *payload, char *buffer) {
     Vector *tags = (Vector *)payload;
     uint32_t tag_count = tags->size > UINT16_MAX ? UINT16_MAX : tags->size;
     uint32_t serialized_tag_count = 0, size = sizeof tag_count;
@@ -232,7 +232,7 @@ unsigned tree_sitter_xml_external_scanner_serialize(void *payload, char *buffer)
     return size;
 }
 
-void tree_sitter_xml_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {
+void tree_sitter_mjml_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {
     Vector *tags = (Vector *)payload;
 
     for (unsigned i = 0; i < tags->size; ++i) {
