@@ -1,5 +1,5 @@
 /**
- * @file Tree-sitter grammar definition for XML
+ * @file Tree-sitter grammar definition for MJML (based on XML)
  * @author ObserverOfTime
  * @license MIT
  */
@@ -12,7 +12,7 @@ import * as c from '../common/common.mjs';
 const O = optional;
 
 export default grammar({
-  name: 'xml',
+  name: 'mjml',
 
   externals: $ => [
     // DTD
