@@ -1,30 +1,32 @@
-# tree-sitter-xml
+# tree-sitter-mjml
 
-[![CI][ci]](https://github.com/tree-sitter-grammars/tree-sitter-xml/actions)
-[![discord][discord]](https://discord.gg/w7nTvsVJhm)
-[![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
-[![npm][npm]](https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-xml)
-[![crates][crates]](https://crates.io/crates/tree-sitter-xml)
-[![pypi][pypi]](https://pypi.org/project/tree-sitter-xml/)
+A Tree-sitter grammar for MJML (Mailjet Markup Language), based on the
+`tree-sitter-xml` grammar with MJML-specific packaging and build fixes for Zed.
 
-A tree-sitter parser for XML & DTD files.
+## Status
 
-## References
+- Language: MJML
+- Tree-sitter CLI: generated with v0.25.x
+- Editor support: Zed (via the MJML Zed Plugin)
 
-- [Extensible Markup Language (XML) 1.0](https://www.w3.org/TR/xml/)
-- [Associating Schemas with XML documents 1.0](https://www.w3.org/TR/xml-model/)
-- [Associating Style Sheets with XML documents 1.0](https://www.w3.org/TR/xml-stylesheet/)
+## Usage
 
-## Editors
+This repo is primarily intended as a grammar dependency for the
+[`mjml-zed-plugin`](https://github.com/itsvessy/mjml-zed-plugin). Zed will fetch
+and compile this grammar automatically when the MJML extension is installed.
 
-- [x] Neovim
-- [ ] Helix _(has alternatives)_
-- [x] Emacs
-- [ ] Zed
+## Attribution
 
-[ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter-grammars/tree-sitter-xml/ci.yml?logo=github&label=CI
-[discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
-[matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
-[npm]: https://img.shields.io/npm/v/%40tree-sitter-grammars%2Ftree-sitter-xml?logo=npm
-[crates]: https://img.shields.io/crates/v/tree-sitter-xml?logo=rust
-[pypi]: https://img.shields.io/pypi/v/tree-sitter-xml?logo=pypi&logoColor=ffd242
+This grammar is derived from:
+
+- [tree-sitter-xml](https://github.com/tree-sitter-grammars/tree-sitter-xml) (MIT)
+
+The MJML grammar retains the XML grammar structure and scanner logic, with
+adjustments to:
+
+- rename the grammar and external scanner symbols to `mjml`
+- vendor Tree-sitter headers needed for Zed’s WASM grammar build
+
+## License
+
+MIT
